@@ -39,16 +39,24 @@ public class Surveys {
                         "       WHERE QUESTIONS_UID = '" + uid + "' " +
                         "ORDER BY ORDERS";
                 ResultSet resultSet2 = statement.executeQuery(query);
-                ArrayList arrayList = new ArrayList<>();
+               // ArrayList <String> survey_list = new ArrayList<String>();
+                //설문 답한 출력
+                ArrayList<String> example_list = new ArrayList<String>();
                 while (resultSet2.next()) {
                     System.out.print(resultSet2.getInt("ORDERS") + ". ");
                     System.out.println(resultSet2.getString("EXAMPLE"));
-                    arrayList.add(arrayList);
+                 example_list.add(resultSet2.getString("EXAPLE_UID"));
+                  
                 }
                 // 설문자 답 받기
                 System.out.print("응답 번호 : ");
-                String answer = scanner.next();
+                Integer answer = scanner.nextInt();
                 
+                // survey_list.add(strDate); //설문자 UID
+                // survey_list.add(uid); //설문 문항의 UID
+                // example_list.get(answer); //설문자 답변 UID
+                query = "insert info SURVEY(USERS_UID, QUESTIONS_UID, EXAMPLE_UID)"+
+                        "Values ('"+strDate+"','"+uid+"','"+example_list.get(answer)+"')"; 
             }
         } catch (SQLException e) {
             e.printStackTrace();
